@@ -1,27 +1,10 @@
 
 package com.mnt1fg.t4m;
-
-import java.io.File;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
-import javax.swing.text.html.HTML;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.TransformerFactoryConfigurationError;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.web.PopupFeatures;
 import javafx.scene.web.WebEngine;
@@ -32,17 +15,13 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.Group;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import javafx.concurrent.Worker;
 import com.jfoenix.controls.JFXButton;
-import com.mnt1fg.t4m.util.Data;
-import com.mnt1fg.t4m.util.Util;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 import org.w3c.dom.events.Event;
 import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.EventTarget;
@@ -65,9 +44,6 @@ public class App extends Application {
         stage.setScene(scene);
         stage.setTitle("東進受講 for Mac");
         stage.show();
-        String playerLink = getClass().getResource("/player/index.html").toExternalForm();
-        System.out.println(playerLink);
-
         WebView view = new WebView();
         view.setLayoutY(30);
         view.setPrefWidth(stage.getWidth()); // 幅を設定
@@ -141,18 +117,7 @@ public class App extends Application {
                                         HTMLIFrameElement iframe3 = (HTMLIFrameElement) evt.getTarget();
                                         Element tag = iframe3.getContentDocument().getElementById("asd");
                                         if(tag != null) {
-                                            Data dataObj = Util.parse(tag.getAttribute("href"));
-                                            Stage stage = new Stage();
-                                            stage.setTitle("受講画面");
-                                            Group group = new Group();
-                                            Scene scene = new Scene(group, 1000, 600);
-                                            stage.setScene(scene);
-                                            WebView view = new WebView();
-                                            view.setPrefWidth(stage.getWidth()); // 幅を設定
-                                            view.setPrefHeight(stage.getHeight()); // 高さを設定
-                                            group.getChildren().add(view);
-                                            view.getEngine().load(playerLink);
-                                            stage.show();
+                                            MoviePlayer.play(tag.getAttribute("href"));
                                         }
                                     }
                                 }, false);
