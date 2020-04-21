@@ -8,7 +8,6 @@ function initApp(url, _ticket, _titleText, _userid) {
     ticket = _ticket;
     document.getElementById("title").textContent = _titleText;
     document.getElementById("userid").textContent = "生徒番号" + _userid;
-    document.body.innerHTML += url;
 
     // Install built-in polyfills to patch browser incompatibilities.
     shaka.polyfill.installAll();
@@ -19,7 +18,7 @@ function initApp(url, _ticket, _titleText, _userid) {
         initPlayer();
     } else {
         // This browser does not have the minimum set of APIs we need.
-        console.error('Browser not supported!');
+        console.log('Browser not supported!');
     }
 }
 
