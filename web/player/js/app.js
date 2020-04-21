@@ -7,7 +7,7 @@ function initData(url, _ticket, _titleText, _userid) {
     manifestUri = url;
     ticket = _ticket;
     document.getElementById("title").textContent = _titleText;
-    document.getElementById("userid").textContent = _userid;
+    document.getElementById("userid").textContent = "生徒番号" + _userid;
     document.body.innerHTML += url;
 
     initApp();

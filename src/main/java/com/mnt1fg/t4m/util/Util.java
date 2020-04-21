@@ -28,7 +28,6 @@ public class Util {
         dataObj.url = url_2;
         dataObj.contents_info = contents_info;
         parseContentsInfo(dataObj);
-        System.out.println(dataObj.toString());
         return dataObj;
     }
 
@@ -42,6 +41,7 @@ public class Util {
         }
         dataObj.title = DecryptString(hashMap.get("title"), dataObj.validdtm);
         dataObj.kosuno = hashMap.get("kosuno");
+        dataObj.title += "第" + dataObj.kosuno + "講";
         dataObj.user_id = hashMap.get("userid");
     }
 
