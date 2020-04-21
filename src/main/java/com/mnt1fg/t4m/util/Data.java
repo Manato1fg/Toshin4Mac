@@ -1,13 +1,13 @@
 package com.mnt1fg.t4m.util;
 
 public class Data {
-    String validdtm;
-    String ticket;
-    String title;
-    String url;
-    String contents_info;
-    String kosuno;
-	String user_id;
+    public String validdtm;
+    public String ticket;
+    public String title;
+    public String url;
+    public String contents_info;
+    public String kosuno;
+	public String user_id;
 
      @Override
      public String toString(){

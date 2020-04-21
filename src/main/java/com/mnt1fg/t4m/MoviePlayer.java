@@ -23,5 +23,6 @@ public class MoviePlayer {
         view.setPrefHeight(stage.getHeight()); // 高さを設定
         group.getChildren().add(view);
         view.getEngine().load("https://toshin4mac.netlify.app/player/index.html");
+        view.getEngine().executeScript("initData("+ dataObj.url + "," + dataObj.ticket + "," + dataObj.title + "," + dataObj.user_id+")");
     }
 }
