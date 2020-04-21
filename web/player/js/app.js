@@ -1,16 +1,14 @@
 var manifestUri;
-var titleText;
-var userid;
 var ticket;
 
 var licenseServer = 'https://multidrm.stream.co.jp/drmapi/wv/nagase-staging';
 
 function initData(url, _ticket, _titleText, _userid) {
     manifestUri = url;
-    titleText = _titleText;
-    userid = _userid;
     ticket = _ticket;
-    licenseServer = licenseServer;
+    document.getElementById("title").textContent = _titleText;
+    document.getElementById("userid").textContent = _userid;
+    document.body.innerHTML += url;
 
     initApp();
 }
