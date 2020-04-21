@@ -13,20 +13,9 @@ import netscape.javascript.JSObject;
 import com.mnt1fg.t4m.util.Util;
 
 public class MoviePlayer {
-
-    //イベント受付クラス（publicでなければならない）
-	public class EventHandler{
-		public void log(String msg) {
-			System.out.println(msg);
-        }
-        
-        public void error(String msg) {
-            System.out.println(msg);
-        }
-	}
-
     public static void play(String scheme) {
         Data dataObj = Util.parse(scheme);
+        System.out.println(dataObj.toString());
         Stage stage = new Stage();
         stage.setTitle("受講画面");
         stage.show();
@@ -40,10 +29,6 @@ public class MoviePlayer {
         view.getEngine().load("https://toshin4mac.netlify.app/player/index.html");
         view.getEngine().getLoadWorker().stateProperty().addListener((value, oldState, newState) -> {
             if (newState == Worker.State.SUCCEEDED) {
-                // コンソールログの実装
-                JSObject window = (JSObject) view.getEngine().executeScript("window");
-                window.setMember("eventHandler", new EventHandler());
-                view.getEngine().executeScript("console.log = function(msg){window.eventHandler.log(msg);};");
                 view.getEngine().executeScript("initData(\'" + dataObj.url + "\',\'" + dataObj.ticket + "\',\'"
                         + dataObj.title + "\',\'" + dataObj.user_id + "\')");
             }
