@@ -3,17 +3,13 @@ var ticket;
 
 var licenseServer = 'https://multidrm.stream.co.jp/drmapi/wv/nagase-staging';
 
-function initData(url, _ticket, _titleText, _userid) {
+function initApp(url, _ticket, _titleText, _userid) {
     manifestUri = url;
     ticket = _ticket;
     document.getElementById("title").textContent = _titleText;
     document.getElementById("userid").textContent = "生徒番号" + _userid;
     document.body.innerHTML += url;
 
-    initApp();
-}
-
-function initApp() {
     // Install built-in polyfills to patch browser incompatibilities.
     shaka.polyfill.installAll();
 
