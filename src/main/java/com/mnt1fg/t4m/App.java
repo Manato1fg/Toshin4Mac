@@ -139,7 +139,6 @@ public class App extends Application {
 			}
         });
         engine.load("https://pos.toshin.com/SSO1/SSOLogin/StudentLogin.aspx");
-        MoviePlayer.initializeSwing();
     }
 
     public void switchUserAgent(boolean to) {
