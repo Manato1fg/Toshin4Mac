@@ -36,8 +36,18 @@
                     paramArray[paramItem[0]] = paramItem[1];
                 }
 
-                initData(paramArray.url, paramArray.ticket, paramArray.titleText, paramArray.userid);
+                
+
+                initData(Base64.decode(paramArray.url), paramArray.ticket, Base64.decode(paramArray.title), paramArray.userid);
             }
+        var Base64 = {
+                encode: function (str) {
+                    return btoa(unescape(encodeURIComponent(str)));
+                },
+                decode: function (str) {
+                    return decodeURIComponent(escape(atob(str)));
+                }
+            };
     </script>
 </body>
 

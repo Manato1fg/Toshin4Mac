@@ -12,8 +12,10 @@ import netscape.javascript.JSObject;
 
 import java.awt.Desktop;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 
 import com.mnt1fg.t4m.util.Util;
 
@@ -33,13 +35,13 @@ public class MoviePlayer {
         }
     }
 
-    public static URI createUrl(Data dataObj) throws URISyntaxException {
+    public static URI createUrl(Data dataObj) throws URISyntaxException, UnsupportedEncodingException {
         StringBuilder sBuilder = new StringBuilder();
         sBuilder.append("https://toshin4mac.netlify.app/player/index.html?");
-        sBuilder.append("url=\'" + dataObj.url + "\'");
-        sBuilder.append("ticket=\'" + dataObj.ticket + "\'");
-        sBuilder.append("title=\'" + dataObj.title + "\'");
-        sBuilder.append("userid=\'" + dataObj.user_id + "\'");
+        sBuilder.append("url=\'" + Util.base64decode(dataObj.url) + "\'");
+        sBuilder.append("&ticket=\'" + dataObj.ticket + "\'");
+        sBuilder.append("&title=\'" + Util.base64decode(dataObj.title) + "\'");
+        sBuilder.append("&userid=\'" + Util.base64decode(dataObj.user_id) + "\'");
         return new URI(sBuilder.toString());
     }
 }

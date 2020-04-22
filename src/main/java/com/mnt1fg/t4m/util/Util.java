@@ -55,6 +55,16 @@ public class Util {
         }
     }
 
+    public static String base64encode(String str) {
+        Base64.Encoder encoder = Base64.getEncoder();
+        try {
+            return new String(encoder.encode(str.getBytes()), "UTF-8");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+
     public static String DecryptString(String paramString1, String paramString2) {
         try {
             StringBuilder stringBuilder = new StringBuilder();
