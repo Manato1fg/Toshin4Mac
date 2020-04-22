@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.concurrent.Worker;
 import com.jfoenix.controls.JFXButton;
-import com.mnt1fg.t4m.util.NativeUtils;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.w3c.dom.Document;

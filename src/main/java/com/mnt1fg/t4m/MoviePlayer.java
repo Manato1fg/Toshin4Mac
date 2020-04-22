@@ -1,35 +1,23 @@
 package com.mnt1fg.t4m;
 
 import com.mnt1fg.t4m.util.Data;
-import com.mnt1fg.t4m.util.JavaBridge;
-
-import javafx.scene.Scene;
-import javafx.scene.Group;
-import javafx.scene.web.WebView;
-import javafx.stage.Stage;
-import javafx.concurrent.Worker;
-import netscape.javascript.JSObject;
 
 import java.awt.Desktop;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URLEncoder;
 
 import com.mnt1fg.t4m.util.Util;
 
 public class MoviePlayer {
-    private static final JavaBridge bridge = new JavaBridge();
 
     public static void play(String scheme) {
         Data dataObj = Util.parse(scheme);
-        System.out.println(dataObj.toString());
         if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
             try {
                 Desktop.getDesktop().browse(createUrl(dataObj));
             } catch (IOException | URISyntaxException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
