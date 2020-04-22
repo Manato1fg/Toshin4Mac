@@ -1,0 +1,22 @@
+.center {
+    text-align: center;
+}
+
+.sentence {
+    font-size: 1.2rem;
+}
+
+.keyboard {
+	height: 41px;
+	min-width: 20px;
+	padding: 0 10px;
+	margin: 5px 10px;
+	background: #EDEDED;
+	border-radius: 10px;
+	box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.5);
+	color: #808080;
+	font: bold 18px arial;
+	text-align: center;
+	line-height: 41px;
+	display: inline-block;	
+}

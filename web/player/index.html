@@ -5,15 +5,41 @@
 </head>
 
 <body>
-    <video id="video" width="800" controls autoplay style="position:absolute; left: 100px;"></video>
-    <h2 style="position:absolute; left: 100px; top:450px;" id="title">Title</h2>
-    <h3 style="position:absolute; left: 100px; top:480px;" id="userid">userid</h3>
 
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <link rel="stylesheet" href="css/gruvbox-light.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <title>東進受講forMac</title>
+</head>
+
+<body>
+    <div class="uk-container">
+        <div class="uk-section-default center">
+            <video id="video" width="800" controls autoplay></video>
+        </div>
+        <hr class="uk-divider-icon">
+        <div class="uk-section-default">
+            <h4 id="title">Title</h4>
+            <h4 id="userid">userid</h4>
+        </div>
+    </div>
     <!-- Shaka Player compiled library: -->
     <script src="js/shaka-player.compiled.min.js"></script>
     <!-- Your application source: -->
     <script src="js/app.js"></script>
-
+    
     <script>
         function initData(url, _ticket, _titleText, _userid) {
             initApp(url, _ticket, _titleText, _userid);
@@ -31,24 +57,24 @@
         // URLのパラメータを取得
         var urlParam = location.search.substring(1);
 
-            // URLにパラメータが存在する場合
-            if (urlParam) {
-                // 「&」が含まれている場合は「&」で分割
-                var param = urlParam.split('&');
+        // URLにパラメータが存在する場合
+        if (urlParam) {
+            // 「&」が含まれている場合は「&」で分割
+            var param = urlParam.split('&');
 
-                // パラメータを格納する用の配列を用意
-                var paramArray = [];
+            // パラメータを格納する用の配列を用意
+            var paramArray = [];
 
-                // 用意した配列にパラメータを格納
-                for (i = 0; i < param.length; i++) {
-                    var paramItem = param[i].split('=');
-                    paramArray[paramItem[0]] = paramItem[1];
-                }
-
-                
-
-                initData(Base64.decode(paramArray.url), paramArray.ticket, Base64.decode(paramArray.title), paramArray.userid);
+            // 用意した配列にパラメータを格納
+            for (i = 0; i < param.length; i++) {
+                var paramItem = param[i].split('=');
+                paramArray[paramItem[0]] = paramItem[1];
             }
+
+
+
+            initData(Base64.decode(paramArray.url), paramArray.ticket, Base64.decode(paramArray.title), paramArray.userid);
+        }
     </script>
 </body>
 
