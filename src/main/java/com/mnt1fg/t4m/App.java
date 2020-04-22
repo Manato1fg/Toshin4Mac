@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.concurrent.Worker;
 import com.jfoenix.controls.JFXButton;
+import com.mnt1fg.t4m.util.NativeUtils;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.w3c.dom.Document;
@@ -39,6 +40,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        //NativeUtils.loadLibraryFromJar("/libjcef.dylib");
         Group root = new Group();
         Scene scene = new Scene(root, 1200, 700);
         stage.setScene(scene);
@@ -137,6 +139,7 @@ public class App extends Application {
 			}
         });
         engine.load("https://pos.toshin.com/SSO1/SSOLogin/StudentLogin.aspx");
+        MoviePlayer.initializeSwing();
     }
 
     public void switchUserAgent(boolean to) {

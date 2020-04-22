@@ -18,6 +18,26 @@
         function initData(url, _ticket, _titleText, _userid) {
             initApp(url, _ticket, _titleText, _userid);
         }
+
+        // URLのパラメータを取得
+        var urlParam = location.search.substring(1);
+
+            // URLにパラメータが存在する場合
+            if (urlParam) {
+                // 「&」が含まれている場合は「&」で分割
+                var param = urlParam.split('&');
+
+                // パラメータを格納する用の配列を用意
+                var paramArray = [];
+
+                // 用意した配列にパラメータを格納
+                for (i = 0; i < param.length; i++) {
+                    var paramItem = param[i].split('=');
+                    paramArray[paramItem[0]] = paramItem[1];
+                }
+
+                initData(paramArray.url, paramArray.ticket, paramArray.titleText, paramArray.userid);
+            }
     </script>
 </body>
 
