@@ -19,6 +19,15 @@
             initApp(url, _ticket, _titleText, _userid);
         }
 
+        var Base64 = {
+            encode: function (str) {
+                return btoa(unescape(encodeURIComponent(str)));
+            },
+            decode: function (str) {
+                return decodeURIComponent(escape(atob(str)));
+            }
+        };
+
         // URLのパラメータを取得
         var urlParam = location.search.substring(1);
 
@@ -40,14 +49,6 @@
 
                 initData(Base64.decode(paramArray.url), paramArray.ticket, Base64.decode(paramArray.title), paramArray.userid);
             }
-        var Base64 = {
-                encode: function (str) {
-                    return btoa(unescape(encodeURIComponent(str)));
-                },
-                decode: function (str) {
-                    return decodeURIComponent(escape(atob(str)));
-                }
-            };
     </script>
 </body>
 
