@@ -70,7 +70,8 @@ function onError(error) {
 }
 
 function changeSpeed(e) {
+    var video = document.getElementById('video');
     var speed = document.getElementById("playbackSpeed").value;
     document.getElementById("labelText").innerHTML = "再生速度 " + speed + "x";
-    window.player.setPlaybackRate(speed);
+    video.playbackRate = speed;
 }
