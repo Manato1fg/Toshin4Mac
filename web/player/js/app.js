@@ -14,7 +14,6 @@ function initApp(url, _ticket, _titleText, _userid, _playback_speed) {
     document.getElementById("playbackSpeed").value = _playback_speed;
 
     document.getElementById("playbackSpeed").addEventListener("input", changeSpeed, false);
-    changeSpeed();
 
     // Install built-in polyfills to patch browser incompatibilities.
     shaka.polyfill.installAll();
@@ -54,6 +53,7 @@ function initPlayer() {
     // Try to load a manifest.
     // This is an asynchronous process.
     player.load(manifestUri).then(function () {
+        changeSpeed();
         // This runs if the asynchronous load is successful.
         console.log('The video has now been loaded!');
     }).catch(onError);  // onError is executed if the asynchronous load fails.
