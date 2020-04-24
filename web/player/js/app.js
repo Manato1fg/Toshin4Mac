@@ -72,5 +72,5 @@ function onError(error) {
 function changeSpeed(e) {
     var speed = document.getElementById("playbackSpeed").value;
     document.getElementById("labelText").innerHTML = "再生速度 " + speed + "x";
-    //player.setPlaybackRate(speed);
+    player.setPlaybackRate(speed);
 }
