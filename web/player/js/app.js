@@ -1,13 +1,20 @@
 var manifestUri;
 var ticket;
 
+let player;
+
 var licenseServer = 'https://multidrm.stream.co.jp/drmapi/wv/nagase-staging';
 
-function initApp(url, _ticket, _titleText, _userid) {
+function initApp(url, _ticket, _titleText, _userid, _playback_speed) {
     manifestUri = url;
     ticket = _ticket;
     document.getElementById("title").textContent = _titleText;
     document.getElementById("userid").textContent = "生徒番号" + _userid;
+
+    document.getElementById("playbackSpeed").value = _playback_speed;
+
+    document.getElementById("playbackSpeed").addEventListener("input", changeSpeed, false);
+    changeSpeed();
 
     // Install built-in polyfills to patch browser incompatibilities.
     shaka.polyfill.installAll();
@@ -19,7 +26,7 @@ function initApp(url, _ticket, _titleText, _userid) {
 function initPlayer() {
     // Create a Player instance.
     var video = document.getElementById('video');
-    var player = new shaka.Player(video);
+    player = new shaka.Player(video);
 
     // Attach player to the window to make it easy to access in the JS console.
     window.player = player;
@@ -60,4 +67,10 @@ function onErrorEvent(event) {
 function onError(error) {
     // Log the error.
     console.error('Error code', error.code, 'object', error);
+}
+
+function changeSpeed(e) {
+    var speed = document.getElementById("playbackSpeed").value;
+    document.getElementById("labelText").innerHTML = "再生速度 " + speed + "x";
+    //player.setPlaybackRate(speed);
 }

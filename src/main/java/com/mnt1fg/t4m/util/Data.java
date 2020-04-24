@@ -7,7 +7,7 @@ public class Data {
     public String url;
     public String contents_info;
     public String kosuno;
-	public String user_id;
+    public String user_id;
 
      @Override
      public String toString(){

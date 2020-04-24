@@ -30,9 +30,16 @@
             <video id="video" width="800" controls autoplay></video>
         </div>
         <hr class="uk-divider-icon">
-        <div class="uk-section-default">
-            <h4 id="title">Title</h4>
-            <h4 id="userid">userid</h4>
+        <div class="uk-column-1-2">
+            <div class="uk-section-default">
+                <h4 id="title">Title</h4>
+                <h4 id="userid">userid</h4>
+            </div>
+            <div>
+                <label id="labelText">再生速度</label>
+                <input class="uk-range" type="range" id="playbackSpeed" min="-1.0" max="4.0" step="0.1" value="1.0">
+                <p style="font-size: 0.8rem;">※仕様上、1.5倍速を選択しても初期値が1.0倍速となっています。</p>
+            </div>
         </div>
     </div>
     <!-- Shaka Player compiled library: -->
@@ -41,8 +48,8 @@
     <script src="js/app.js"></script>
     
     <script>
-        function initData(url, _ticket, _titleText, _userid) {
-            initApp(url, _ticket, _titleText, _userid);
+        function initData(url, _ticket, _titleText, _userid, _playback_speed) {
+            initApp(url, _ticket, _titleText, _userid, _playback_speed);
         }
 
         var Base64 = {
@@ -73,7 +80,7 @@
 
 
 
-            initData(Base64.decode(paramArray.url), paramArray.ticket, Base64.decode(paramArray.title), paramArray.userid);
+            initData(Base64.decode(paramArray.url), paramArray.ticket, Base64.decode(paramArray.title), paramArray.userid, "1.0");
         }
     </script>
 </body>

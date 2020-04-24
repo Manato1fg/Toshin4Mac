@@ -1,5 +1,6 @@
 
 package com.mnt1fg.t4m;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -15,9 +16,18 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.Group;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import javafx.concurrent.Worker;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+
+import com.jfoenix.animation.alert.JFXAlertAnimation;
+import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.w3c.dom.Document;
@@ -52,12 +62,10 @@ public class App extends Application {
         root.getChildren().add(view);
         engine = view.getEngine();
         engine.setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36");
-        engine.setCreatePopupHandler(new Callback<PopupFeatures, WebEngine>() {
-            @Override
-            public WebEngine call(PopupFeatures p) {
-                return null;
-            }
-        });
+        popupHandle(engine);
+
+        engine.setOnAlert(event -> showAlert(event.getData(), stage));
+        engine.setConfirmHandler(message -> showConfirm(message, stage));
 
         AnchorPane pane = new AnchorPane();
         pane.setPrefWidth(stage.getWidth());
@@ -148,6 +156,45 @@ public class App extends Application {
             engine.setUserAgent(
                     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36");
         }
+    }
+
+    public void popupHandle(WebEngine engine) {
+        engine.setCreatePopupHandler(new Callback<PopupFeatures, WebEngine>() {
+
+            public WebEngine call(PopupFeatures param) {
+
+                Stage stage = new Stage(StageStyle.UTILITY);
+                WebView popupView = new WebView();
+
+                stage.setScene(new Scene(popupView));
+                stage.show();
+
+                return popupView.getEngine();
+            }
+
+        });
+    }
+
+    private void showAlert(String message, Stage stage) {
+        JFXDialogLayout layout = new JFXDialogLayout();
+        layout.setBody(new Label(""));
+        JFXAlert<Void> alert = new JFXAlert<>(stage);
+        alert.setOverlayClose(true);
+        alert.setAnimation(JFXAlertAnimation.CENTER_ANIMATION);
+        alert.setContent(layout);
+        alert.showAndWait();
+    }
+
+    private boolean showConfirm(String message, Stage stage) {
+        Dialog<ButtonType> confirm = new Dialog<>();
+        confirm.getDialogPane().setContentText(message);
+        confirm.getDialogPane().getButtonTypes().addAll(ButtonType.YES, ButtonType.NO);
+        boolean result = confirm.showAndWait().filter(ButtonType.YES::equals).isPresent();
+
+        // for debugging:
+        System.out.println(result);
+
+        return result;
     }
 
     public static void main(String[] args) throws IOException {
