@@ -100,6 +100,14 @@ public class App extends Application {
             engine.reload(); // リロードする
         });
         pane.getChildren().add(reloadButton); // AnchoerPaneにButtonを貼り付け
+        FontIcon homeIcon = FontIcon.of(FontAwesome.HOME);
+        JFXButton homeButton = new JFXButton("", homeIcon);
+        homeButton.setLayoutX(90); // X座標を設定
+        homeButton.setOnAction(e -> {
+            switchUserAgent(false);
+            engine.load("https://pos.toshin.com/SSO1/SSOLogin/StudentLogin.aspx");
+        });
+        pane.getChildren().add(homeButton); // AnchoerPaneにButtonを貼り付け
 
         engine.getLoadWorker().stateProperty().addListener((value, oldState, newState) -> {
             if (newState == Worker.State.SUCCEEDED) {
