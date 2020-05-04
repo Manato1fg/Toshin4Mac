@@ -1,4 +1,4 @@
-# Toshin4Mac
+# 東進受講forMacOS
 
 ## 使い方
 [ダウンロードページ](https://toshin4mac.netlify.app/install/index.html)に行き手順に従ってください。
