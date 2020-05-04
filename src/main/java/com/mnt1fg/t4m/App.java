@@ -26,7 +26,6 @@ import javafx.scene.control.Label;
 import com.jfoenix.animation.alert.JFXAlertAnimation;
 import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 
 import org.kordamp.ikonli.javafx.FontIcon;
