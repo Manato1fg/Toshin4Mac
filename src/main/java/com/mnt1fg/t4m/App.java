@@ -184,7 +184,7 @@ public class App extends Application {
 
     private void showAlert(String message, Stage stage) {
         JFXDialogLayout layout = new JFXDialogLayout();
-        layout.setBody(new Label(""));
+        layout.setBody(new Label(message));
         JFXAlert<Void> alert = new JFXAlert<>(stage);
         alert.setOverlayClose(true);
         alert.setAnimation(JFXAlertAnimation.CENTER_ANIMATION);
@@ -197,9 +197,6 @@ public class App extends Application {
         confirm.getDialogPane().setContentText(message);
         confirm.getDialogPane().getButtonTypes().addAll(ButtonType.YES, ButtonType.NO);
         boolean result = confirm.showAndWait().filter(ButtonType.YES::equals).isPresent();
-
-        // for debugging:
-        System.out.println(result);
 
         return result;
     }
