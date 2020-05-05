@@ -5,12 +5,12 @@ This application is created <b>unofficially</b>. You <b>MUST</b> take responsibi
 ## Web Site
 [https://manato1fg.github.io/Toshin4Mac/](https://manato1fg.github.io/Toshin4Mac/)
 
-## 必要実行環境
-+ Java9以上(更新は[ここ](https://www.java.com/ja/download/help/mac_java_update.xml)をご覧ください)
+## Requirements
++ Java9 or later(see [here](https://www.java.com/en/download/help/mac_java_update.xml) for details)
 + MacOS
 
-## 使い方
-[ダウンロードページ](https://toshin4mac.netlify.app/install/index.html)に行き手順に従ってください。
+## Usage
+See [Download Page](https://toshin4mac.netlify.app/install/index.html).
 
 ## Update Info
 + v0 (on May 4th 2020)
