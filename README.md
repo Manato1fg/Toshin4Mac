@@ -1,4 +1,4 @@
-# 東進受講forMacOS
+# 東進受講.app
 
 ## CAUTION
 This application is created <b>unofficially</b>. You <b>MUST</b> take responsibility when any trouble occurs.
