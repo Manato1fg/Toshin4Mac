@@ -4,7 +4,7 @@
 [https://manato1fg.github.io/Toshin4Mac/](https://manato1fg.github.io/Toshin4Mac/)
 
 ### 必要実行環境
-+ Java9以上
++ Java9以上(更新は[ここ](https://www.java.com/ja/download/help/mac_java_update.xml)をご覧ください)
 + MacOS
 
 ## 使い方
