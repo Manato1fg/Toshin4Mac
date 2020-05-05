@@ -1,5 +1,9 @@
 # 東進受講forMacOS
 
+### 必要実行環境
++ Java9以上
++ MacOS
+
 ## 使い方
 [ダウンロードページ](https://toshin4mac.netlify.app/install/index.html)に行き手順に従ってください。
 
