@@ -4,9 +4,9 @@
 [ダウンロードページ](https://toshin4mac.netlify.app/install/index.html)に行き手順に従ってください。
 
 ## Update Info
-+ v0 
++ v0 (on May 4th 2020)
   - first distribution
-+ v1 
++ v1 (on May 5th 2020)
   - add auto update
   - fix that alert popup does not show message.
 
