@@ -1,5 +1,8 @@
 # 東進受講forMacOS
 
+## Web Site
+[https://manato1fg.github.io/Toshin4Mac/](https://manato1fg.github.io/Toshin4Mac/)
+
 ### 必要実行環境
 + Java9以上
 + MacOS
@@ -15,5 +18,7 @@
   - fix that alert popup does not show message.
 
 ## Author
-Manato1fg<br>
-不具合等は[Twitter](https://twitter.com/manatoy_jpn)でおしらせください。
+Manato1fg
+
+## Contact
+If you have any trouble or request, feel free to contact me on [Twitter](https://twitter.com/manatoy_jpn) 
