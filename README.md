@@ -1,5 +1,7 @@
 # 東進受講forMacOS
 
+## CAUTION
+This application is created <b>unofficially</b>. You <b>MUST</b> take responsibility when any trouble occurs.
 ## Web Site
 [https://manato1fg.github.io/Toshin4Mac/](https://manato1fg.github.io/Toshin4Mac/)
 
