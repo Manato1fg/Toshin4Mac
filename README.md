@@ -8,6 +8,7 @@ This application is created <b>unofficially</b>. You <b>MUST</b> take responsibi
 ## Requirements
 + Java9 or later(see [here](https://www.java.com/en/download/help/mac_java_update.xml) for details)
 + MacOS
++ Google Chrome(Safari doesn't support playing movie)
 
 ## Usage
 See [Download Page](https://toshin4mac.netlify.app/install/index.html).
