@@ -13,10 +13,11 @@
 </head>
 
 <body>
-    <div class="uk-container">
+    <div class="uk-container" id="main">
         <div class="uk-section-default center">
             <video id="video" width="800" controls autoplay></video>
         </div>
+        <div id="controller">
         <hr class="uk-divider-icon">
         <div class="uk-column-1-2">
             <div class="uk-section-default">
@@ -24,17 +25,21 @@
                 <h4 id="userid">userid</h4>
             </div>
             <div>
+                <button class="uk-button uk-button-default" id="flipbutton" onclick="flip()"><span uk-icon="refresh">上下反転</span></button>
+                <button class="uk-button uk-button-default" id="sizebutton" onclick="switchSize()"><span uk-icon="expand">拡大</span></button>
+                <br>
                 <label id="labelText">再生速度</label>
-                <input class="uk-range" type="range" id="playbackSpeed" min="-1.0" max="4.0" step="0.1" value="1.0">
+                <input class="uk-range" type="range" id="playbackSpeed" min="0.0" max="4.0" step="0.1" value="1.0">
                 <p style="font-size: 0.8rem;">※仕様上、1.5倍速を選択しても初期値が1.0倍速となっています。</p>
             </div>
+        </div>
         </div>
     </div>
     <!-- Shaka Player compiled library: -->
     <script src="js/shaka-player.compiled.min.js"></script>
     <!-- Your application source: -->
+    <script src="js/notify.js"></script>
     <script src="js/app.js"></script>
-    
     <script>
         function initData(url, _ticket, _titleText, _userid, _playback_speed) {
             initApp(url, _ticket, _titleText, _userid, _playback_speed);

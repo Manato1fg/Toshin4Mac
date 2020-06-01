@@ -75,3 +75,37 @@ function changeSpeed(e) {
     document.getElementById("labelText").innerHTML = "再生速度 " + speed + "x";
     video.playbackRate = speed;
 }
+
+var isFlipped = false;
+function flip() {
+    if(!isFlipped) {
+        document.getElementById("main").classList.add("flip");
+    } else {
+        document.getElementById("main").classList.remove("flip");
+    }
+    isFlipped = !isFlipped;
+}
+
+var isExpanded = false;
+function switchSize() {
+    if (!isExpanded) {
+        notificate("escキーで元に戻ります。", window.innerWidth / 2 - 150, window.innerHeight / 2 - 10, 2000);
+        document.getElementById("controller").classList.add("vanish");
+        //document.getElementById("video").setAttribute("height");
+        document.getElementById("video").setAttribute("width", window.innerWidth);
+        console.log(window.innerWidth);
+        
+    }
+    isExpanded = true;
+}
+
+document.addEventListener('keydown', keydown);
+
+function keydown(e) {
+    if (isExpanded && e.keyCode == 27) {
+        document.getElementById("controller").classList.remove("vanish");
+        //document.getElementById("video").setAttribute("height", "");
+        document.getElementById("video").setAttribute("width", "800");
+        isExpanded = false;
+    }
+}
