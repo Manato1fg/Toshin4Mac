@@ -5,7 +5,7 @@ let player;
 
 var licenseServer = 'https://multidrm.stream.co.jp/drmapi/wv/nagase-staging';
 
-function initApp(url, _ticket, _titleText, _userid, _playback_speed, _sso_token, _contents_info, _vod_file_path, _validdtm) {
+function initApp(url, _ticket, _titleText, _userid, _playback_speed/*,_sso_token, _contents_info, _vod_file_path, _validdtm*/) {
     manifestUri = url;
     ticket = _ticket;
     document.getElementById("title").textContent = _titleText;
