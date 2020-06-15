@@ -5,7 +5,7 @@ let player;
 
 var licenseServer = 'https://multidrm.stream.co.jp/drmapi/wv/nagase-staging';
 
-function initApp(url, _ticket, _titleText, _userid, _playback_speed) {
+function initApp(url, _ticket, _titleText, _userid, _playback_speed, _sso_token, _contents_info, _vod_file_path, _validdtm) {
     manifestUri = url;
     ticket = _ticket;
     document.getElementById("title").textContent = _titleText;
@@ -14,6 +14,8 @@ function initApp(url, _ticket, _titleText, _userid, _playback_speed) {
     document.getElementById("playbackSpeed").value = _playback_speed;
 
     document.getElementById("playbackSpeed").addEventListener("input", changeSpeed, false);
+
+    registViewed(_sso_token, _vod_file_path, _contents_info, _validdtm);
 
     // Install built-in polyfills to patch browser incompatibilities.
     shaka.polyfill.installAll();
@@ -108,4 +110,32 @@ function keydown(e) {
         document.getElementById("video").setAttribute("width", "800");
         isExpanded = false;
     }
+}
+
+function registViewed(sso_token, vod_file_path, contents_info, validdtm) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://pos2.toshin.com/DRM2/DRM25/Webservice/DRMWebService.asmx', true);
+
+    xhr.setRequestHeader('Content-Type', 'application/soap+xml; charset=utf-8');
+    xhr.setRequestHeader('Host', 'pos2.toshin.com');
+    xhr.setRequestHeader('SOAPAction', 'http://pos.toshin.com/registViewedContents');
+
+    var xml = `<?xml version="1.0" encoding="utf-8"?>
+<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+  <soap12:Body>
+    <registViewedContents xmlns="http://pos.toshin.com/">
+      <SSO_TOKEN>${sso_token}</SSO_TOKEN>
+      <vodfilepath>${vod_file_path}</vodfilepath>
+      <contentsinfo>${contents_info}</contentsinfo>
+      <validdtm>${validdtm}</validdtm>
+    </registViewedContents>
+  </soap12:Body>
+</soap12:Envelope>`
+
+    xhr.send(xml);
+
+    xhr.onload = function () {
+        let responseObj = xhr.response;
+        console.log(responseObj.message);
+    };
 }

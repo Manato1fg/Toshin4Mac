@@ -12,6 +12,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.source>${java.version}</maven.compiler.source>
   </properties>
+
   <build>
     <plugins>
     <plugin>
@@ -98,7 +99,5 @@
     <artifactId>javafx-web</artifactId>
     <version>15-ea+4</version>
 </dependency>
-
-
   </dependencies>
 </project>

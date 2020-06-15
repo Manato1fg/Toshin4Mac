@@ -23,6 +23,10 @@ public class MoviePlayer {
         }
     }
 
+    private static void registViewed() {
+        //
+    }
+
     public static URI createUrl(Data dataObj) throws URISyntaxException, UnsupportedEncodingException {
         StringBuilder sBuilder = new StringBuilder();
         sBuilder.append("https://toshin4mac.netlify.app/player/index.html?");
@@ -30,6 +34,10 @@ public class MoviePlayer {
         sBuilder.append("&ticket=" + dataObj.ticket);
         sBuilder.append("&title=" + Util.base64encode(dataObj.title));
         sBuilder.append("&userid=" + dataObj.user_id);
+        sBuilder.append("&sso_token=" + dataObj.sso_token);
+        sBuilder.append("&contentsinfo=" + dataObj.contents_info);
+        sBuilder.append("&vod_file_path=" + dataObj.vod_file_path);
+        sBuilder.append("&validdtm=" + dataObj.validdtm);
         return new URI(sBuilder.toString());
     }
 }

@@ -8,12 +8,13 @@ import java.util.HashMap;
 
 public class Util {
 
+
     public static Data parse(String scheme) {
         Data dataObj = new Data();
         String data1 = scheme.split("A477C046-2D9B-40CF-94C0-427C9C99E580://nagase.com/openwith?")[1];
         String[] data2 = data1.split(",");
         HashMap<String, String> hashMap = new HashMap<String, String>();
-        for(String datum : data2) {
+        for (String datum : data2) {
             String key = datum.split("=", 2)[0];
             String value = datum.split("=", 2)[1];
             hashMap.put(key, value);
@@ -22,11 +23,13 @@ public class Util {
         String ticket = hashMap.get("ticket");
         String url_2 = DecryptString(hashMap.get("url_2"), validdtm);
         String contents_info = hashMap.get("contentsinfo");
+        String sso_token = hashMap.get("?SSO_TOKEN");
 
         dataObj.validdtm = validdtm;
         dataObj.ticket = ticket;
         dataObj.url = url_2;
         dataObj.contents_info = contents_info;
+        dataObj.sso_token = sso_token;
         parseContentsInfo(dataObj);
         return dataObj;
     }
@@ -43,7 +46,9 @@ public class Util {
         dataObj.kosuno = hashMap.get("kosuno");
         dataObj.title += "第" + dataObj.kosuno + "講";
         dataObj.user_id = hashMap.get("userid");
+        dataObj.vod_file_path = hashMap.get("vodfilepath");
     }
+
 
     public static String base64decode(String str) {
         Base64.Decoder decoder = Base64.getDecoder();

@@ -41,8 +41,8 @@
     <script src="js/notify.js"></script>
     <script src="js/app.js"></script>
     <script>
-        function initData(url, _ticket, _titleText, _userid, _playback_speed) {
-            initApp(url, _ticket, _titleText, _userid, _playback_speed);
+        function initData(url, _ticket, _titleText, _userid, _playback_speed, _sso_token, _contents_info, _vod_file_path, _validdtm) {
+            initApp(url, _ticket, _titleText, _userid, _playback_speed, _sso_token, _contents_info, _vod_file_path, _validdtm);
         }
 
         var Base64 = {
@@ -73,7 +73,7 @@
 
 
 
-            initData(Base64.decode(paramArray.url), paramArray.ticket, Base64.decode(paramArray.title), paramArray.userid, "1.0");
+            initData(Base64.decode(paramArray.url), paramArray.ticket, Base64.decode(paramArray.title), paramArray.userid, "1.0", paramArray.sso_token, paramArray.contents_info, Base64.decode(paramArray.vod_file_path), paramArray.validdtm);
         }
     </script>
 </body>
