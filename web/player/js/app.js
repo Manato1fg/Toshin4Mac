@@ -117,7 +117,7 @@ function registViewed(sso_token, vod_file_path, contents_info, validdtm) {
     xhr.open('POST', 'https://pos2.toshin.com/DRM2/DRM25/Webservice/DRMWebService.asmx', true);
 
     xhr.setRequestHeader('Content-Type', 'application/soap+xml; charset=utf-8');
-    xhr.setRequestHeader('Host', 'pos2.toshin.com');
+    //xhr.setRequestHeader('Host', 'pos2.toshin.com');
     xhr.setRequestHeader('SOAPAction', 'http://pos.toshin.com/registViewedContents');
 
     var xml = `<?xml version="1.0" encoding="utf-8"?>

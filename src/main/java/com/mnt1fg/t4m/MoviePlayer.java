@@ -36,7 +36,7 @@ public class MoviePlayer {
         sBuilder.append("&userid=" + dataObj.user_id);
         sBuilder.append("&sso_token=" + dataObj.sso_token);
         sBuilder.append("&contentsinfo=" + dataObj.contents_info);
-        sBuilder.append("&vod_file_path=" + dataObj.vod_file_path);
+        sBuilder.append("&vod_file_path=" + Util.base64encode(dataObj.vod_file_path));
         sBuilder.append("&validdtm=" + dataObj.validdtm);
         return new URI(sBuilder.toString());
     }
