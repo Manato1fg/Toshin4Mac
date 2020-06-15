@@ -15,7 +15,7 @@ function initApp(url, _ticket, _titleText, _userid, _playback_speed, _sso_token,
 
     document.getElementById("playbackSpeed").addEventListener("input", changeSpeed, false);
 
-    registViewed(_sso_token, _vod_file_path, _contents_info, _validdtm);
+    //registViewed(_sso_token, _vod_file_path, _contents_info, _validdtm);
 
     // Install built-in polyfills to patch browser incompatibilities.
     shaka.polyfill.installAll();
