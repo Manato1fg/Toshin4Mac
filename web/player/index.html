@@ -67,9 +67,13 @@
 
             // 用意した配列にパラメータを格納
             for (i = 0; i < param.length; i++) {
-                var paramItem = param[i].split('=');
+                var paramItem = param[i].split(/(?<=^[^=]+?)=/);
                 paramArray[paramItem[0]] = paramItem[1];
+
             }
+
+            console.log(paramArray);
+            
 
 
 
