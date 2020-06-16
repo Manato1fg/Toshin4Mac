@@ -2,7 +2,10 @@
 package com.mnt1fg.t4m;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.awt.Desktop;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -27,6 +30,8 @@ import com.jfoenix.animation.alert.JFXAlertAnimation;
 import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialogLayout;
+import com.mnt1fg.t4m.util.Config;
+import com.mnt1fg.t4m.util.Util;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.w3c.dom.Document;
@@ -36,6 +41,7 @@ import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.EventTarget;
 import org.w3c.dom.html.HTMLIFrameElement;
 import org.kordamp.ikonli.fontawesome.FontAwesome;
+
 
 public class App extends Application {
     boolean flag = false; // 戻るボタンの判別用
@@ -152,7 +158,23 @@ public class App extends Application {
                 }
 			}
         });
+        Config config = Config.getInstance();
+        int latestVersion = Util.getLatestVersion();
+        if(config.getInteger("version") < latestVersion) {
+            config.setInteger("version", latestVersion);
+            showRecentUpdate();
+        }
         engine.load("https://pos.toshin.com/SSO1/SSOLogin/StudentLogin.aspx");
+    }
+
+    public void showRecentUpdate() {
+        if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+            try {
+                Desktop.getDesktop().browse(new URI("https://toshin4mac.netlify.app/install/update.html"));
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void switchUserAgent(boolean to) {

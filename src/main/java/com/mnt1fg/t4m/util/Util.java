@@ -3,6 +3,11 @@ package com.mnt1fg.t4m.util;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Base64;
 import java.util.HashMap;
 
@@ -114,5 +119,29 @@ public class Util {
             }
         }
         return arrayOfByte;
+    }
+
+    public static int getLatestVersion() {
+        return Integer.parseInt(getFromURL("https://toshin4mac.netlify.app/install/version.txt"));
+    }
+
+    public static String getFromURL(String _url) {
+        try {
+            URL url = new URL(_url);
+            HttpURLConnection http = (HttpURLConnection) url.openConnection();
+            http.setRequestMethod("GET");
+            http.connect();
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            String xml = "", line = "";
+            while ((line = reader.readLine()) != null)
+                xml += line;
+            reader.close();
+            return xml;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 }
