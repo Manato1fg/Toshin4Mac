@@ -1,9 +1,9 @@
 package com.mnt1fg.t4m.util;
 
-import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -15,17 +15,20 @@ public class Config {
     private HashMap<String, String> data;
 
     private Config() {
+        boolean flag = false;
 
         file = new File("ToshinConfig.yml");
         if (!file.exists()) {
+            flag = true;
             try {
                 file.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            setInteger("version", 1);
         }
+        load();
+        if(flag)
+            setInteger("version", 1);
     }
 
     public String getString(String key) {
@@ -69,6 +72,23 @@ public class Config {
             });
 
             fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void load() {
+        data = new HashMap<>();
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            String line = reader.readLine();
+            while (line != null) {
+                String[] s = line.split(":", 2);
+                data.put(s[0], s[1]);
+                line = reader.readLine();
+            }
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
