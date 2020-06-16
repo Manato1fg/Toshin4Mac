@@ -19,6 +19,12 @@ See [Download Page](https://toshin4mac.netlify.app/install/index.html).
 + v1 (on May 5th 2020)
   - add auto update
   - fix that alert popup does not show message.
++ v1.1 (on June 16th 2020)
+  - Record your watching
+  - Show this page once if any update available.
+  - On the video page, you can expand your video or make upside down.
+  - Fixed some bugs and improved performances.
+  - Call this version Osamu.
 
 ## Author
 Manato1fg
