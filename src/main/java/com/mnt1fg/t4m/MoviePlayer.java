@@ -10,10 +10,17 @@ import java.net.URISyntaxException;
 
 import com.mnt1fg.t4m.util.Util;
 
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+import org.xmlpull.v1.XmlPullParserException;
+
 public class MoviePlayer {
 
     public static void play(String scheme) {
         Data dataObj = Util.parse(scheme);
+        setViewed(dataObj);
         if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
             try {
                 Desktop.getDesktop().browse(createUrl(dataObj));
@@ -23,8 +30,25 @@ public class MoviePlayer {
         }
     }
 
-    private static void registViewed() {
-        //
+    private static void setViewed(Data data) {
+        SoapObject soapObject = new SoapObject("http://pos.toshin.com/", "registViewedContents");
+        soapObject.addProperty("SSO_TOKEN", data.sso_token);
+        soapObject.addProperty("vodfilepath", data.vod_file_path);
+        soapObject.addProperty("contentsinfo", data.contents_info);
+        soapObject.addProperty("validdtm", data.validdtm);
+        SoapSerializationEnvelope soapSerializationEnvelope = new SoapSerializationEnvelope(110);
+        soapSerializationEnvelope.dotNet = true;
+        soapSerializationEnvelope.setOutputSoapObject(soapObject);
+        HttpTransportSE httpTransportSE = new HttpTransportSE(
+                "https://pos2.toshin.com/DRM2/DRM25/Webservice/DRMWebService.asmx");
+        try {
+            httpTransportSE.call("http://pos.toshin.com/registViewedContents",
+                    (SoapEnvelope) soapSerializationEnvelope);
+            String str = soapSerializationEnvelope.getResponse().toString();
+            //System.out.println(str);
+        } catch (IOException | XmlPullParserException e) {
+            e.printStackTrace();
+        }
     }
 
     public static URI createUrl(Data dataObj) throws URISyntaxException, UnsupportedEncodingException {
