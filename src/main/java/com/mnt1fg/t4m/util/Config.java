@@ -17,7 +17,7 @@ public class Config {
     private Config() {
         boolean flag = false;
 
-        file = new File("ToshinConfig.yml");
+        file = new File(System.getProperty("user.dir") + "/ToshinConfig.yml");
         if (!file.exists()) {
             flag = true;
             try {

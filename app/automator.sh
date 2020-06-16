@@ -22,6 +22,7 @@ download() {
 }
 
 if [ ! -d $DIR ];then
+    open "https://toshin4mac.netlify.app/install/update.html"
 	osascript -e 'display notification "初回起動のため必要ファイルをダウンロードしています。しばらくお待ちください。(約40MB)" with title "東進受講.app"'
 	download
     osascript -e 'display notification "ダウンロードが完了しました。" with title "東進受講.app"'

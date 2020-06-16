@@ -158,12 +158,12 @@ public class App extends Application {
                 }
 			}
         });
-        Config config = Config.getInstance();
+        /*Config config = Config.getInstance();
         int latestVersion = Util.getLatestVersion();
         if(config.getInteger("version") < latestVersion) {
             config.setInteger("version", latestVersion);
             showRecentUpdate();
-        }
+        }*/
         engine.load("https://pos.toshin.com/SSO1/SSOLogin/StudentLogin.aspx");
     }
 
